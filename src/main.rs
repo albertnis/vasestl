@@ -12,7 +12,7 @@ fn main() -> Result<(), std::io::Error> {
 
     // Distance between each height ring, in mm
     const H_STEP: f32 = 0.2;
-    const H_MAX: f32 = 100.0;
+    const H_MAX: f32 = 104.0;
 
     // Location to save output
     const OUTPUT_LOCATION: &str = "out/output.stl";
@@ -53,14 +53,14 @@ fn main() -> Result<(), std::io::Error> {
 fn r(t: f32, z: f32) -> f32 {
     // "Base shape": a circle sweeping to a square
     
-    const SQUARE_SIZE: f32 = 51.0; // Half the width (minimum "radius") of square
+    const SQUARE_SIZE: f32 = 52.0; // Half the width (minimum "radius") of square
     let square = if (PI * 0.25..PI * 0.75).contains(&t) || (PI * 1.25..PI * 1.75).contains(&t) {
         f32::abs(SQUARE_SIZE / f32::sin(t))
     } else {
         f32::abs(SQUARE_SIZE / f32::cos(t))
     };
 
-    const CIRCLE: f32 = 42.0; // Radius of circle
+    const CIRCLE: f32 = 44.0; // Radius of circle
 
     let z_ease = -(f32::cos(PI * z) - 1.0) / 2.0;
     let base = CIRCLE * (1.0 - z_ease) + square * z_ease;
