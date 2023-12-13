@@ -3,6 +3,11 @@ use std::f32::consts::PI;
 type Xyz = (f32, f32, f32);
 type Xy = (f32, f32);
 
+/// Build a cloud of points by iterating over angles and z-heights,
+/// running a mathematical function `r` at each coordinate
+///
+/// Returns a vector of vectors. Each vector is a 2-dimensional "ring" of points
+/// calculated for that z-height iteration.
 pub fn build(r: fn(f32, f32) -> f32, t_res: i32, h_max: f32, h_step: f32) -> Vec<Vec<Xyz>> {
     let n_layers = f32::floor(h_max / h_step) as i32 + 1;
     println!("Building {n_layers} layers");
