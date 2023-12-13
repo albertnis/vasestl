@@ -12,7 +12,7 @@ fn main() {
 
     // Distance between each height ring, in mm
     const H_STEP: f32 = 0.2;
-    const H_MAX: f32 = 96.0;
+    const H_MAX: f32 = 100.0;
 
     // Location to save output
     const OUTPUT_LOCATION: &str = "out/output.stl";
@@ -81,7 +81,7 @@ fn build_point_ring(t_res: i32, z: f32) -> Vec<Xy> {
 /// 
 /// Return `r`, the distance from the origin for this point
 fn r(t: f32, z: f32) -> f32 {
-    const CIRCLE: f32 = 40.0;
+    const CIRCLE: f32 = 42.0;
     const SQUARE_SIZE: f32 = 51.0;
 
     let square = if (PI * 0.25..PI * 0.75).contains(&t) {
