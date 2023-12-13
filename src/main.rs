@@ -52,21 +52,17 @@ fn main() -> Result<(), std::io::Error> {
 /// Return `r`, the distance from the origin for this point
 fn r(t: f32, z: f32) -> f32 {
     // "Base shape": a circle sweeping to a square
-    const CIRCLE: f32 = 42.0;
-    const SQUARE_SIZE: f32 = 51.0;
-
-    let square = if (PI * 0.25..PI * 0.75).contains(&t) {
-        SQUARE_SIZE / f32::sin(t)
-    } else if (PI * 0.75..PI * 1.25).contains(&t) {
-        -SQUARE_SIZE / f32::cos(t)
-    } else if (PI * 1.25..PI * 1.75).contains(&t) {
-        -SQUARE_SIZE / f32::sin(t)
+    
+    const SQUARE_SIZE: f32 = 51.0; // Half the width (minimum "radius") of square
+    let square = if (PI * 0.25..PI * 0.75).contains(&t) || (PI * 1.25..PI * 1.75).contains(&t) {
+        f32::abs(SQUARE_SIZE / f32::sin(t))
     } else {
-        SQUARE_SIZE / f32::cos(t)
+        f32::abs(SQUARE_SIZE / f32::cos(t))
     };
 
-    let z_ease = -(f32::cos(PI * z) - 1.0) / 2.0;
+    const CIRCLE: f32 = 42.0; // Radius of circle
 
+    let z_ease = -(f32::cos(PI * z) - 1.0) / 2.0;
     let base = CIRCLE * (1.0 - z_ease) + square * z_ease;
 
     // "Decoration": A sine wave to add a rippled texture
