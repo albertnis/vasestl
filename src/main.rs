@@ -52,7 +52,7 @@ fn main() -> Result<(), std::io::Error> {
 /// Return `r`, the distance from the origin for this point
 fn r(t: f32, z: f32) -> f32 {
     // "Base shape": a circle sweeping to a square
-    
+
     const SQUARE_SIZE: f32 = 52.0; // Half the width (minimum "radius") of square
     let square = if (PI * 0.25..PI * 0.75).contains(&t) || (PI * 1.25..PI * 1.75).contains(&t) {
         f32::abs(SQUARE_SIZE / f32::sin(t))
