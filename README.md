@@ -27,3 +27,33 @@ An application for converting a 3D mathematical equation into an STL surface. Gr
    ```shell
    cargo run --release
    ```
+
+   Output is stored in `out/output.stl` by default.
+
+1. Print the resulting STL file. Use vase mode in the slicer!
+
+## Examples
+
+### "Bowl"
+
+Semi-spherical base with broad sine wave easing in
+
+![](./examples/bowl.png)
+
+### "Inch"
+
+Base shape circle lofting to square, with swept sine ripple
+
+![](./examples/inch.png)
+
+### "Spider"
+
+Base shape is a loft between two rectangles, plus a bulbous broadening. Two sine waves add decoration. 
+
+![](./examples/spider.png)
+
+### "NJoy"
+
+Base shape circle lofting to square, with diagonally opposed triangle waves
+
+![](./examples/njoy.png)
