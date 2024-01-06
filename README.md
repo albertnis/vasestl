@@ -2,6 +2,8 @@
 
 An application for converting a 3D mathematical equation into an STL surface. Great for generating geometric shapes to print as vases, vessels or pots!
 
+[Read the blog post](https://albert.nz/vasestl)
+
 ## Usage
 
 > [!NOTE]
