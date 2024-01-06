@@ -4,6 +4,9 @@ An application for converting a 3D mathematical equation into an STL surface. Gr
 
 ## Usage
 
+> [!NOTE]
+> See the examples directory for samples of `r` functions and constants to use as per the instructions below!
+
 1. In `main.rs`, update the `r` function to define the shape you wish to model. The function is in polar co-ordinates: it receives an angle (radians; between 0 and 2π) and a z-height (between 0 and 1) and outputs a radius. For example, to define a cylinder of radius 20:
 
    ```rust

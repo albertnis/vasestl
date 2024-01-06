@@ -2,7 +2,7 @@ type Xyz = (f32, f32, f32);
 type Triangle = (Xyz, Xyz, Xyz, Xyz);
 
 /// Generate the triangles defining a surface on which all points lie
-pub fn build(points: Vec<Vec<Xyz>>) -> Vec<Triangle> {
+pub fn build(points: Vec<Vec<Xyz>>, closed: bool) -> Vec<Triangle> {
     let mut output: Vec<Triangle> =
         Vec::with_capacity((points.len() - 1) * (points[0].len() - 1) * 2);
 
@@ -20,6 +20,20 @@ pub fn build(points: Vec<Vec<Xyz>>) -> Vec<Triangle> {
 
             output.push(tri1);
             output.push(tri2);
+
+            if closed {
+                if i == 0 {
+                    // Bottom layer
+                    let p_bot: Xyz = (0., 0., p1.2);
+                    let tri3: Triangle = triangle_from_points((p1, p_bot, p2));
+                    output.push(tri3);
+                } else if i == points.len() - 2 {
+                    // Top layer
+                    let p_top: Xyz = (0., 0., p4.2);
+                    let tri3: Triangle = triangle_from_points((p4, p3, p_top));
+                    output.push(tri3);
+                }
+            }
         }
     }
 
