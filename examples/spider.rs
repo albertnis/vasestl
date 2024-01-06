@@ -40,12 +40,10 @@ fn r(t: f32, z: f32) -> f32 {
     let base = rectangle * bulbous;
 
     // "Decoration": A sine wave to add a rippled texture
-    let w_1 = f32::sin((t + z) * 60.0);
-    let w_2 = f32::sin((t - z) * 60.0);
-    let wave_1 = (1.5 - ease_in) * (1. + if w_1 > 0. { 1. } else { w_1 });
-    let wave_2 = (1.5 - ease_in) * (1. + if w_2 > 0. { 1. } else { w_2 });
+    let w_1 = 0.3 * f32::sin((t + z) * 80.0);
+    let w_2 = f32::sin((t - z) * 80.0);
 
-    let decoration = wave_1.max(wave_2);
+    let decoration = w_1 + w_2;
 
     // Combine and return
     base + decoration
